@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #0D0C22;
+  --color-gold: #EFBF04;
+  --color-primary: #7C3AED;
+  --color-secondary: #FBBF24;
+  --color-text-main: #E2E8F0;
+  --color-text-muted: #94A3B8;
+  --color-glass-border: #FFFFFF;
+}
+
+@theme {
+  @keyframes fadeIn {
+    '0%': {
+      opacity: '0'
+    }
+
+    ,
+    '100%': {
+      opacity: '1'
+    }
+  }
+
+  @keyframes slideInBottom {
+    '0%': {
+      transform: 'translateY(20px)', opacity: '0'
+    }
+
+    ,
+    '100%': {
+      transform: 'translateY(0)', opacity: '1'
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-dark text-[var(--color-text-main)] antialiased;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgb(var(--color-primary) / 0.2) 1px, transparent 0);
+    background-size: 25px 25px;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply hover:bg-slate-400/30 hover:backdrop-blur-xl rounded-2xl transition-all duration-200
+  }
+
+  .glass-card {
+    @apply bg-slate-900/40 backdrop-blur-lg border border-[var(--color-glass-border)] rounded-2xl shadow-2xl shadow-black/20;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-in-bottom {
+    animation: slideInBottom 0.5s ease-in-out;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-dark) / 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d3545;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-primary) / 0.8);
+}
